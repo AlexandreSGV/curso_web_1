@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Grid Layout</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .grid-container {
+            display: grid;
+            grid-template-rows: 100px auto 100px; /* Altura do cabeçalho, conteúdo e rodapé */
+            grid-template-columns: 1fr 3fr; /* Largura da barra lateral e do conteúdo principal */
+            gap: 10px;
+            height: 100vh;
+            background-color: #ffffcc;
+            padding: 10px;
+        }
+        .header {
+            grid-column: 1 / -1; /* Estende-se por todas as colunas */
+            background-color: #add8e6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .sidebar {
+            background-color: #98fb98;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .content {
+            background-color: #f0e68c;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .footer {
+            grid-column: 1 / -1; /* Estende-se por todas as colunas */
+            background-color: #dda0dd;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .grid-item {
+            padding: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Grid Layout</h2>
+<div class="grid-container">
+    <div class="grid-item header">Cabeçalho</div>
+    <div class="grid-item sidebar">Barra Lateral</div>
+    <div class="grid-item content">Conteúdo Principal</div>
+    <div class="grid-item footer">Rodapé</div>
+</div>
+
+</body>
+</html>
