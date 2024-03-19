@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Propriedades visuais de CSS </title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .container {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 40px;
+        }
+        .example {
+            margin: 10px;
+            padding: 20px;
+            width: 200px;
+            height: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px black;
+        }
+        .opacity-25 { background-color: #4CAF50; opacity: 0.25; }
+        .opacity-50 { background-color: #4CAF50; opacity: 0.5; }
+        .opacity-75 { background-color: #4CAF50; opacity: 0.75; }
+        .box-shadow-light { box-shadow: 2px 2px 5px grey; }
+        .box-shadow-medium { box-shadow: 5px 5px 10px grey; }
+        .box-shadow-heavy { box-shadow: 10px 10px 20px grey; }
+        .border-radius-small { border-radius: 5px; background-color: #f44336; }
+        .border-radius-medium { border-radius: 20px; background-color: #f44336; }
+        .border-radius-large { border-radius: 50%; background-color: #f44336; width: 100px; height: 100px; line-height: 100px; }
+    </style>
+</head>
+<body>
+
+<h2>Opacidade</h2>
+<div class="container">
+    <div class="example opacity-25">25%</div>
+    <div class="example opacity-50">50%</div>
+    <div class="example opacity-75">75%</div>
+</div>
+
+<h2>Sombras</h2>
+<div class="container">
+    <div class="example box-shadow-light">Leve</div>
+    <div class="example box-shadow-medium">Média</div>
+    <div class="example box-shadow-heavy">Pesada</div>
+</div>
+
+<h2>Cantos Arredondados</h2>
+<div class="container">
+    <div class="example border-radius-small">Pequeno</div>
+    <div class="example border-radius-medium">Médio</div>
+    <div class="example border-radius-large">Grande</div>
+</div>
+
+</body>
+</html>
