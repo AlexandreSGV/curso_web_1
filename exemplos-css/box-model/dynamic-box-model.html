@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Box Model Dinâmica com Margens e Paddings Independentes</title>
+    <style>
+        #dynamic-box {
+            border: 2px solid black;
+            margin: 20px;
+            padding: 20px;
+            width: 200px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<div id="dynamic-box">Texto inicial</div>
+
+<!-- Borda -->
+<label for="border-width">Grossura da Borda:</label>
+<input type="number" id="border-width" value="2">
+
+<label for="border-color">Cor da Borda:</label>
+<input type="color" id="border-color" value="#000000">
+
+<label for="border-style">Tipo da Borda:</label>
+<select id="border-style">
+    <option value="solid">Solid</option>
+    <option value="dotted">Dotted</option>
+    <option value="dashed">Dashed</option>
+    <option value="double">Double</option>
+</select>
+
+<!-- Margem -->
+<fieldset>
+    <legend>Margens</legend>
+    <label for="margin-top">Top:</label>
+    <input type="number" id="margin-top" value="20">
+    <label for="margin-bottom">Bottom:</label>
+    <input type="number" id="margin-bottom" value="20">
+    <label for="margin-left">Left:</label>
+    <input type="number" id="margin-left" value="20">
+    <label for="margin-right">Right:</label>
+    <input type="number" id="margin-right" value="20">
+</fieldset>
+
+<!-- Padding -->
+<fieldset>
+    <legend>Paddings</legend>
+    <label for="padding-top">Top:</label>
+    <input type="number" id="padding-top" value="20">
+    <label for="padding-bottom">Bottom:</label>
+    <input type="number" id="padding-bottom" value="20">
+    <label for="padding-left">Left:</label>
+    <input type="number" id="padding-left" value="20">
+    <label for="padding-right">Right:</label>
+    <input type="number" id="padding-right" value="20">
+</fieldset>
+
+<!-- Texto do Conteúdo -->
+<label for="content-text">Texto Conteúdo:</label>
+<input type="text" id="content-text" value="Texto inicial">
+
+<button onclick="updateBox()">Atualizar Box</button>
+
+<script>
+    function updateBox() {
+        const box = document.getElementById('dynamic-box');
+        
+        // Borda
+        const borderWidth = document.getElementById('border-width').value;
+        const borderColor = document.getElementById('border-color').value;
+        const borderStyle = document.getElementById('border-style').value;
+        
+        // Margem
+        const marginTop = document.getElementById('margin-top').value;
+        const marginBottom = document.getElementById('margin-bottom').value;
+        const marginLeft = document.getElementById('margin-left').value;
+        const marginRight = document.getElementById('margin-right').value;
+        
+        // Padding
+        const paddingTop = document.getElementById('padding-top').value;
+        const paddingBottom = document.getElementById('padding-bottom').value;
+        const paddingLeft = document.getElementById('padding-left').value;
+        const paddingRight = document.getElementById('padding-right').value;
+        
+        // Texto
+        const contentText = document.getElementById('content-text').value;
+
+        // Aplicando estilos
+        box.style.borderWidth = borderWidth + 'px';
+        box.style.borderColor = borderColor;
+        box.style.borderStyle = borderStyle;
+        box.style.margin = `${marginTop}px ${marginRight}px ${marginBottom}px ${marginLeft}px`;
+        box.style.padding = `${paddingTop}px ${paddingRight}px ${paddingBottom}px ${paddingLeft}px`;
+        box.textContent = contentText;
+    }
+</script>
+
+</body>
+</html>
