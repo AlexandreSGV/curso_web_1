@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo de Responsividade com Flexbox</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        header, footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+        }
+        /*Flex Container: A classe .container é designada como um flex container, o que torna seus filhos (as .box) flex items. Usamos flex-wrap: wrap; para permitir que os itens se reorganizem conforme necessário, baseando-se no tamanho da tela.*/
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 10px;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        /*Flex Items: Cada .box é configurada para crescer e encolher com uma base de 200px, mas não menor que isso. Isso significa que em telas maiores, as caixas se expandirão para ocupar o espaço disponível, mantendo uma base mínima de 200px. Em telas menores, elas se ajustam conforme necessário, graças ao flex-wrap.*/
+        .box {
+            flex: 1 1 200px; /* Cresce e encolhe a partir de 200px */
+            background-color: lightblue;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        /*Media Query: A media query @media (max-width: 600px) ajusta o flex-basis das caixas para 100%, fazendo com que cada caixa ocupe uma linha inteira em dispositivos menores, como smartphones.*/
+        @media (max-width: 600px) {
+            .box {
+                flex-basis: 100%; /* Cada caixa ocupa toda a linha em telas pequenas */
+            }
+        }
+
+
+
+
+
+    </style>
+</head>
+<body>
+<header>Cabeçalho do Site</header>
+<main>
+    <div class="container">
+        <div class="box">Caixa 1</div>
+        <div class="box">Caixa 2</div>
+        <div class="box">Caixa 3</div>
+    </div>
+</main>
+<footer>Rodapé do Site</footer>
+</body>
+</html>
