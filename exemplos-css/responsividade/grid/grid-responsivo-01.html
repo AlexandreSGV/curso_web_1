@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid Responsivo</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-areas:
+                "header"
+                "nav"
+                "main"
+                "footer";
+            gap: 10px;
+            padding: 10px;
+        }
+        header {
+            grid-area: header;
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        nav {
+            grid-area: nav;
+            background-color: #ddd;
+            padding: 20px;
+        }
+        main {
+            grid-area: main;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        footer {
+            grid-area: footer;
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        /*@media (min-width: 768px): Esta media query ajusta o layout para telas maiores que 768 pixels de largura. Muda grid-template-columns para duas colunas, sendo a primeira de 200px de largura (para o menu lateral) e a segunda ocupando o restante do espaço disponível (1fr). grid-template-areas é atualizado para refletir o novo layout, com o cabeçalho e o rodapé se estendendo por ambas as colunas, enquanto o menu lateral (nav) e o conteúdo principal (main) são dispostos lado a lado.*/
+        @media (min-width: 768px) {
+            .container {
+                grid-template-columns: 200px 1fr;
+                grid-template-areas:
+                    "header header"
+                    "nav main"
+                    "footer footer";
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>Cabeçalho</header>
+    <nav>Menu Lateral</nav>
+    <main>Conteúdo Principal</main>
+    <footer>Rodapé</footer>
+</div>
+
+</body>
+</html>
