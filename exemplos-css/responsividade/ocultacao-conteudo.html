@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsividade com Ocultação e Reorganização</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .container {
+            display: flex;
+            width: 100%;
+            max-width: 960px;
+            justify-content: space-between;
+        }
+        .content {
+            padding: 20px;
+            flex: 1;
+            text-align: center;
+        }
+        .b {
+            background-color: #f4f4f4;
+        }
+        header, footer {
+            width: 100%;
+            text-align: center;
+            padding: 20px;
+            background-color: #333;
+            color: white;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                flex-direction: column;
+            }
+            .b {
+                display: none;
+            }
+            .container .c {
+                order: -1; /* Move C para o topo dentro do container */
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>Cabeçalho</header>
+<div class="container">
+    <div class="content a">Coluna A</div>
+    <div class="content b">Coluna B (oculto em telas pequenas)</div>
+    <div class="content c">Coluna C</div>
+</div>
+<footer>Rodapé</footer>
+
+</body>
+</html>
