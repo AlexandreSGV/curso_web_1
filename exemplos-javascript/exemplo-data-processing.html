@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lista de Usuários</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <h1>Lista de Usuários</h1>
+    <button id="loadUsers">Carregar Usuários</button>
+    <input type="text" id="filterInput" placeholder="Filtrar por nome">
+    <button id="sortByName">Ordenar por Nome</button>
+    <button id="sortByEmail">Ordenar por Email</button>
+    <table id="usersTable">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Telefone</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Dados dos usuários serão inseridos aqui -->
+        </tbody>
+    </table>
+
+    <script>
+        let usersData = [];
+        let filteredData = [];
+        let currentSort = null;
+        let currentFilter = '';
+
+        document.getElementById('loadUsers').addEventListener('click', function() {
+            // URL da API simulada
+            const apiUrl = 'https://jsonplaceholder.typicode.com/users';
+
+            // Fazendo a requisição assíncrona usando Fetch API
+            fetch(apiUrl)
+                .then(response => response.json())
+                .then(data => {
+                    usersData = data; // Armazena os dados recebidos
+                    applyFiltersAndSort();
+                })
+                .catch(error => {
+                    console.error('Erro ao carregar os usuários:', error);
+                });
+        });
+
+        document.getElementById('sortByName').addEventListener('click', function() {
+            currentSort = 'name';
+            applyFiltersAndSort();
+        });
+
+        document.getElementById('sortByEmail').addEventListener('click', function() {
+            currentSort = 'email';
+            applyFiltersAndSort();
+        });
+
+        document.getElementById('filterInput').addEventListener('input', function() {
+            currentFilter = this.value.toLowerCase();
+            applyFiltersAndSort();
+        });
+
+        function applyFiltersAndSort() {
+            filteredData = usersData;
+
+            // Aplica o filtro
+            if (currentFilter) {
+                filteredData = filteredData.filter(user => user.name.toLowerCase().includes(currentFilter));
+            }
+
+            // Aplica a ordenação
+            if (currentSort) {
+                filteredData = filteredData.sort((a, b) => a[currentSort].localeCompare(b[currentSort]));
+            }
+
+            displayUsers(filteredData);
+        }
+
+        function displayUsers(data) {
+            const usersTable = document.getElementById('usersTable').getElementsByTagName('tbody')[0];
+
+            // Limpando a tabela antes de adicionar novos dados
+            usersTable.innerHTML = '';
+
+            // Iterando sobre os dados dos usuários
+            data.forEach(user => {
+                const row = usersTable.insertRow();
+
+                const cellId = row.insertCell(0);
+                const cellName = row.insertCell(1);
+                const cellEmail = row.insertCell(2);
+                const cellPhone = row.insertCell(3);
+
+                cellId.innerText = user.id;
+                cellName.innerText = user.name;
+                cellEmail.innerText = user.email;
+                cellPhone.innerText = user.phone;
+            });
+        }
+
+        
+    </script>
+</body>
+</html>

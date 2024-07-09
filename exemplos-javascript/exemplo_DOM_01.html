@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lista de Tarefas</title>
+    <style>
+        #tasks {
+            list-style-type: none;
+        }
+        .task {
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <h1>Lista de Tarefas</h1>
+    <form id="taskForm">
+        <input type="text" id="taskInput" placeholder="Nova tarefa">
+        <button type="submit">Adicionar</button>
+    </form>
+    <ul id="tasks"></ul>
+
+    <script>
+        document.getElementById('taskForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Impede o envio padrão do formulário
+
+            const taskInput = document.getElementById('taskInput');
+            const taskText = taskInput.value.trim();
+
+            if (taskText !== '') {
+                const taskItem = document.createElement('li');
+                taskItem.className = 'task';
+                taskItem.innerText = taskText;
+
+                document.getElementById('tasks').appendChild(taskItem);
+                taskInput.value = ''; // Limpa o campo de entrada
+            }
+        });
+    </script>
+</body>
+</html>

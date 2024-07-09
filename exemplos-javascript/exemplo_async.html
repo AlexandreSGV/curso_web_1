@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Previsão do Tempo</title>
+    <style>
+        #weather {
+            font-family: Arial, sans-serif;
+            margin-top: 20px;
+        }
+        #city {
+            padding: 10px;
+            width: 200px;
+        }
+        #getWeather {
+            padding: 10px 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Previsão do Tempo</h1>
+    <form id="weatherForm">
+        <label for="city">Cidade:</label>
+        <input type="text" id="city" name="city">
+        <button type="submit" id="getWeather">Buscar</button>
+    </form>
+    <div id="weather"></div>
+
+    <script>
+        document.getElementById('weatherForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Impede o envio padrão do formulário
+
+            const city = document.getElementById('city').value;
+
+            // gerar a chave em https://openweathermap.org/
+            const apiKey = 'XXXXXXXXXXXXXXXXXXXXXX'; // Substitua pela sua chave da API
+
+            // URL da API de clima
+            const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric&lang=pt_br`;
+
+            // Fazendo a requisição assíncrona usando Fetch API
+            fetch(url)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Cidade não encontrada');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    // Processando os dados e atualizando o DOM
+                    const weatherDiv = document.getElementById('weather');
+                    weatherDiv.innerHTML = `
+                        <h2>Previsão do Tempo para ${data.name}</h2>
+                        <p><strong>Temperatura:</strong> ${data.main.temp}°C</p>
+                        <p><strong>Clima:</strong> ${data.weather[0].description}</p>
+                        <p><strong>Umidade:</strong> ${data.main.humidity}%</p>
+                        <p><strong>Velocidade do Vento:</strong> ${data.wind.speed} m/s</p>
+                    `;
+                })
+                .catch(error => {
+                    // Tratamento de erros
+                    const weatherDiv = document.getElementById('weather');
+                    weatherDiv.innerHTML = `<p>Erro: ${error.message}</p>`;
+                });
+        });
+        
+    </script>
+</body>
+</html>
