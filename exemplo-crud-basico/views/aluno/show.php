@@ -1,22 +1,16 @@
-<!-- views/aluno/show.php -->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detalhes do Aluno</title>
-    <link rel="stylesheet" href="../css/styles.css">
-</head>
-<body>
-    <h1>Detalhes do Aluno</h1>
-    <p>ID: <?php echo $this->aluno->id; ?></p>
-    <p>Nome: <?php echo $this->aluno->nome; ?></p>
-    <p>Matrícula: <?php echo $this->aluno->matricula; ?></p>
-    <p>CPF: <?php echo $this->aluno->cpf; ?></p>
-    <p>E-mail: <?php echo $this->aluno->email; ?></p>
-    <p>Data de Nascimento: <?php echo $this->aluno->data_nascimento; ?></p>
-    <p>Data de Criação: <?php echo $this->aluno->timestamp_criacao; ?></p>
-    <p>Data de Atualização: <?php echo $this->aluno->timestamp_update; ?></p>
-    <a href="index.php">Voltar</a>
-</body>
-</html>
+<div class="container" style="margin: 0 20%;">
+    <h1 class="my-4">Detalhes do Aluno</h1>
+    <div class="card">
+        <div class="card-body">
+            <p><strong>ID:</strong> <?php echo $aluno->id; ?></p>
+            <p><strong>Nome:</strong> <?php echo $aluno->nome; ?></p>
+            <p><strong>Matrícula:</strong> <?php echo $aluno->matricula; ?></p>
+            <p><strong>CPF:</strong> <?php echo $aluno->cpf; ?></p>
+            <p><strong>E-mail:</strong> <?php echo $aluno->email; ?></p>
+            <p><strong>Data de Nascimento:</strong> <?php echo $aluno->data_nascimento; ?></p>
+            <p><strong>Data de Criação:</strong> <?php echo $aluno->timestamp_criacao; ?></p>
+            <p><strong>Data de Atualização:</strong> <?php echo $aluno->timestamp_update; ?></p>
+            <a href="index.php?action=list-alunos" class="btn btn-primary">Voltar</a>
+        </div>
+    </div>
+</div>

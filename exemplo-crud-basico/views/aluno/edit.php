@@ -1,31 +1,24 @@
-<!-- views/aluno/edit.php -->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editar Aluno</title>
-    <link rel="stylesheet" href="../css/styles.css">
-</head>
-<body>
-    <h1>Editar Aluno</h1>
-    <form action="index.php?action=edit-aluno&id=<?php echo $this->aluno->id; ?>" method="POST">
+<h1>Editar Aluno</h1>
+<form action="index.php?action=edit-aluno&id=<?php echo $aluno->id; ?>" method="POST">
+    <div class="form-group">
         <label for="nome">Nome:</label>
-        <input type="text" name="nome" value="<?php echo $this->aluno->nome; ?>" required>
-        
+        <input type="text" class="form-control" name="nome" value="<?php echo $aluno->nome; ?>" required>
+    </div>
+    <div class="form-group">
         <label for="matricula">Matrícula:</label>
-        <input type="text" name="matricula" value="<?php echo $this->aluno->matricula; ?>" required>
-        
+        <input type="text" class="form-control" name="matricula" value="<?php echo $aluno->matricula; ?>" required>
+    </div>
+    <div class="form-group">
         <label for="cpf">CPF:</label>
-        <input type="text" name="cpf" value="<?php echo $this->aluno->cpf; ?>" required>
-        
+        <input type="text" class="form-control" name="cpf" value="<?php echo $aluno->cpf; ?>" required>
+    </div>
+    <div class="form-group">
         <label for="email">E-mail:</label>
-        <input type="email" name="email" value="<?php echo $this->aluno->email; ?>" required>
-        
+        <input type="email" class="form-control" name="email" value="<?php echo $aluno->email; ?>" required>
+    </div>
+    <div class="form-group">
         <label for="data_nascimento">Data de Nascimento:</label>
-        <input type="date" name="data_nascimento" value="<?php echo $this->aluno->data_nascimento; ?>" required>
-        
-        <input type="submit" value="Salvar">
-    </form>
-</body>
-</html>
+        <input type="date" class="form-control" name="data_nascimento" value="<?php echo $aluno->data_nascimento; ?>" required>
+    </div>
+    <input type="submit" class="btn btn-primary" value="Salvar">
+</form>
