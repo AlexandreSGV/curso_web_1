@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Eventos em JavaScript</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        #output {
+            margin-top: 20px;
+        }
+        .event-info {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Monitoramento de Eventos</h1>
+    <div id="output">
+        <div class="event-info">
+            <strong>Posição do Mouse:</strong> X: <span id="mouseX">0</span>, Y: <span id="mouseY">0</span>
+        </div>
+        <div class="event-info">
+            <strong>Botão Esquerdo do Mouse:</strong> <span id="leftButton">Não pressionado</span>
+        </div>
+        <div class="event-info">
+            <strong>Botão Direito do Mouse:</strong> <span id="rightButton">Não pressionado</span>
+        </div>
+        <div class="event-info">
+            <strong>Tecla Pressionada:</strong> <span id="keyPressed">Nenhuma</span>
+        </div>
+        <div class="event-info">
+            <strong>Código da Tecla:</strong> <span id="keyCode">Nenhum</span>
+        </div>
+        <div class="event-info">
+            <strong>Event Which:</strong> <span id="eventWhich">Nenhum</span>
+        </div>
+    </div>
+
+    <script>
+        // Atualiza a posição do mouse na tela
+        document.addEventListener('mousemove', function(event) {
+            document.getElementById('mouseX').innerText = event.clientX;
+            document.getElementById('mouseY').innerText = event.clientY;
+        });
+
+        // Detecta quando os botões do mouse são pressionados
+        document.addEventListener('mousedown', function(event) {
+            if (event.button === 0) {
+                document.getElementById('leftButton').innerText = 'Pressionado';
+            }
+            if (event.button === 2) {
+                document.getElementById('rightButton').innerText = 'Pressionado';
+            }
+        });
+
+        // Detecta quando os botões do mouse são liberados
+        document.addEventListener('mouseup', function(event) {
+            if (event.button === 0) {
+                document.getElementById('leftButton').innerText = 'Não pressionado';
+            }
+            if (event.button === 2) {
+                document.getElementById('rightButton').innerText = 'Não pressionado';
+            }
+        });
+
+        // Captura eventos do teclado
+        document.addEventListener('keydown', function(event) {
+            document.getElementById('keyPressed').innerText = event.key;
+            document.getElementById('keyCode').innerText = event.code;
+            document.getElementById('eventWhich').innerText = event.which;
+        });
+
+
+    </script>
+</body>
+</html>
