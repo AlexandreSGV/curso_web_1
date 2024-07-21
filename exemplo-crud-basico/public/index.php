@@ -18,9 +18,9 @@ switch ($action) {
         // Chama o método create() do controlador de Aluno para criar um novo aluno
         $result = $alunoController->create();
         break;
-    case 'show-aluno':
-        // Chama o método show() do controlador de Aluno para exibir os detalhes de um aluno
-        $result = $alunoController->show($id);
+    case 'read-aluno':
+        // Chama o método read() do controlador de Aluno para exibir os detalhes de um aluno
+        $result = $alunoController->read($id);
         break;
     case 'edit-aluno':
         // Chama o método edit() do controlador de Aluno para editar um aluno
@@ -29,10 +29,6 @@ switch ($action) {
     case 'delete-aluno':
         // Chama o método delete() do controlador de Aluno para deletar um aluno
         $alunoController->delete($id);
-        break;
-    case 'confirm-delete-aluno':
-        // Chama o método confirmDelete() do controlador de Aluno para confirmar a deleção de um aluno
-        $result = $alunoController->confirmDelete($id);
         break;
     case 'list-alunos':
         // Chama o método index() do controlador de Aluno para listar todos os alunos

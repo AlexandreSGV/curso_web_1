@@ -64,7 +64,7 @@ class Aluno {
     }
 
     // Método para obter todos os alunos
-    function read() {
+    function index() {
         // Query SQL para selecionar todos os registros da tabela alunos
         $query = "SELECT * FROM " . $this->table_name;
         $statement = $this->conn->prepare($query); // Prepara a query para execução
@@ -73,7 +73,7 @@ class Aluno {
     }
 
     // Método para obter um aluno por ID
-    function readOne() {
+    function read() {
         // Query SQL para selecionar um único registro da tabela alunos pelo ID
         $query = "SELECT * FROM " . $this->table_name . " WHERE id = ? LIMIT 0,1";
 

@@ -28,7 +28,7 @@ class AlunoController {
 
     // Método para exibir todos os alunos
     public function index() {
-        $statement = $this->aluno->read(); // Obtém todos os alunos chamando o método read() da classe Aluno
+        $statement = $this->aluno->index(); // Obtém todos os alunos chamando o método index() da classe Aluno
         $alunos = $statement->fetchAll(PDO::FETCH_ASSOC); // Fetch os dados e armazena em um array associativo
         return ['view' => '../views/aluno/index.php', 'data' => compact('alunos')]; // Retorna a view e os dados dos alunos
     }
@@ -52,10 +52,10 @@ class AlunoController {
     }
 
     // Método para exibir os detalhes de um aluno
-    public function show($id) {
+    public function read($id) {
         $this->aluno->id = $id; // Define o ID do aluno
-        $this->aluno->readOne(); // Obtém os detalhes do aluno chamando o método readOne() da classe Aluno
-        return ['view' => '../views/aluno/show.php', 'data' => ['aluno' => $this->aluno]]; // Retorna a view e os dados do aluno
+        $this->aluno->read(); // Obtém os detalhes do aluno chamando o método read() da classe Aluno
+        return ['view' => '../views/aluno/read.php', 'data' => ['aluno' => $this->aluno]]; // Retorna a view e os dados do aluno
     }
 
     // Método para exibir o formulário de edição e atualizar um aluno
@@ -75,7 +75,7 @@ class AlunoController {
             }
         } else {
             $this->aluno->id = $id; // Define o ID do aluno
-            $this->aluno->readOne(); // Obtém os detalhes do aluno chamando o método readOne() da classe Aluno
+            $this->aluno->read(); // Obtém os detalhes do aluno chamando o método read() da classe Aluno
         }
         return ['view' => '../views/aluno/edit.php', 'data' => ['aluno' => $this->aluno]]; // Retorna a view do formulário de edição e os dados do aluno
     }

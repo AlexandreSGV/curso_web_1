@@ -21,7 +21,7 @@
                     <td><?php echo $aluno['email']; ?></td>
                     <td><?php echo $aluno['data_nascimento']; ?></td>
                     <td>
-                        <a href="index.php?action=show-aluno&id=<?php echo $aluno['id']; ?>" class="btn btn-info btn-sm">
+                        <a href="index.php?action=read-aluno&id=<?php echo $aluno['id']; ?>" class="btn btn-info btn-sm">
                             <i class="fas fa-eye"></i>
                         </a>
                         <a href="index.php?action=edit-aluno&id=<?php echo $aluno['id']; ?>" class="btn btn-warning btn-sm">
