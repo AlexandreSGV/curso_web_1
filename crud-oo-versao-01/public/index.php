@@ -46,4 +46,4 @@ $data = $result['data'];
 
 // Inclui o layout principal e passa a view e os dados
 include('../views/layout.php');
-?>
+
