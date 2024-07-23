@@ -27,7 +27,7 @@
                         <a href="index.php?action=edit-aluno&id=<?php echo $aluno['id']; ?>" class="btn btn-warning btn-sm">
                             <i class="fas fa-edit"></i>
                         </a>
-                        <a href="index.php?action=delete-aluno&id=<?php echo $aluno['id']; ?>" class="btn btn-danger btn-sm">
+                        <a href="index.php?action=delete-aluno&id=<?php echo $aluno['id']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Você tem certeza que deseja deletar este aluno?');">
                             <i class="fas fa-trash"></i>
                         </a>
                     </td>
