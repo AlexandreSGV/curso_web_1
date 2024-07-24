@@ -118,6 +118,47 @@ class TurmaController {
     }
 
     public function matricular_v1() {
+        $errors = [];
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            // Valida o ID da turma
+            $this->alunoTurma->turma_id = $_POST['turma_id'];
+            $this->alunoTurma->aluno_id = $_POST['aluno_id'];
+
+            $turmaModel = new Turma($this->db);
+            $alunoModel = new Aluno($this->db);
+
+            $turmaModel->id = $this->alunoTurma->turma_id;
+            $alunoModel->id = $this->alunoTurma->aluno_id;
+
+            if (!$turmaModel->read()) {
+                $errors[] = "ID da turma inválido.";
+            }
+
+            if (!$alunoModel->read()) {
+                $errors[] = "ID do aluno inválido.";
+            }
+
+            // Se não houver erros, tenta matricular o aluno
+            if (empty($errors)) {
+                if ($this->alunoTurma->matricular()) {
+                    header("Location: index.php?action=read-turma&id=" . $_POST['turma_id']);
+                    exit;
+                } else {
+                    $errors[] = "Falha ao matricular o aluno.";
+                }
+            }
+        }
+
+        // Retorna a view com os erros
+        return ['view' => '../views/turma/matricular_v1.php', 'data' => ['errors' => $errors]];
+    }
+
+
+
+
+
+    public function matricular_v2() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $this->alunoTurma->turma_id = $_POST['turma_id'];
             $this->alunoTurma->aluno_id = $_POST['aluno_id'];
@@ -125,26 +166,13 @@ class TurmaController {
                 header("Location: index.php?action=read-turma&id=" . $_POST['turma_id']);
                 exit;
             }
+        } else {
+            // Carrega as turmas e alunos para preencher os selects
+            $turmas = $this->turma->index()->fetchAll(PDO::FETCH_ASSOC);
+            $alunos = (new Aluno($this->db))->index()->fetchAll(PDO::FETCH_ASSOC);
+            return ['view' => '../views/turma/matricular_v2.php', 'data' => ['turmas' => $turmas, 'alunos' => $alunos]];
         }
-        return ['view' => '../views/turma/matricular_v1.php', 'data' => []];
     }
-
-
-    public function matricular_v2() {
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $this->alunoTurma->turma_id = $_POST['turma_id'];
-        $this->alunoTurma->aluno_id = $_POST['aluno_id'];
-        if ($this->alunoTurma->matricular()) {
-            header("Location: index.php?action=read-turma&id=" . $_POST['turma_id']);
-            exit;
-        }
-    } else {
-        // Carrega as turmas e alunos para preencher os selects
-        $turmas = $this->turma->index()->fetchAll(PDO::FETCH_ASSOC);
-        $alunos = (new Aluno($this->db))->index()->fetchAll(PDO::FETCH_ASSOC);
-        return ['view' => '../views/turma/matricular_v2.php', 'data' => ['turmas' => $turmas, 'alunos' => $alunos]];
-    }
-}
 
 }
 ?>

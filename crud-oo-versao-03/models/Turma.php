@@ -77,13 +77,26 @@ class Turma {
 
         $row = $statement->fetch(PDO::FETCH_ASSOC); // Obtém o resultado da query
 
-        // Define as propriedades do objeto Turma com os dados obtidos
-        $this->nome = $row['nome'];
-        $this->professor = $row['professor'];
-        $this->turno = $row['turno'];
-        $this->timestamp_criacao = $row['timestamp_criacao'];
-        $this->timestamp_update = $row['timestamp_update'];
+        
+    
+        if($row) {
+            $this->nome = $row['nome'];
+            $this->professor = $row['professor'];
+            $this->turno = $row['turno'];
+            $this->timestamp_criacao = $row['timestamp_criacao'];
+            $this->timestamp_update = $row['timestamp_update'];
+            return true;
+        }
+        
+        return false;
     }
+
+    
+
+
+
+
+
 
     // Método para atualizar um turma
     function edit() {

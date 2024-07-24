@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-
 </head>
 <body>
     <div class="container">
@@ -49,22 +48,32 @@
             </div>
         </nav>
         <section class="my-4">
-            <?php 
-            // Verifica se a variável $view não está vazia
-            if (!empty($view)) {
-                // Extrai as variáveis do array $data para o escopo atual
-                // Isso cria variáveis a partir das chaves do array $data
-                extract($data);
-                
-                // Inclui o arquivo da view especificada na variável $view
-                // Isso insere o conteúdo da view no ponto onde include($view) é chamado
-                include($view); 
-            } else {
-                // Se $view estiver vazia, exibe uma mensagem de erro
-                echo "<p>View não encontrada.</p>";
-            }
-            ?>
-        </section>
+    <?php 
+    // Verifica se a variável $view não está vazia
+    if (!empty($view)) {
+        // Extrai as variáveis do array $data para o escopo atual
+        // Isso cria variáveis a partir das chaves do array $data
+        extract($data);
+        
+        // Verifica se há erros globais
+        if (!empty($errors)): ?>
+            <div class="alert alert-danger">
+                <?php foreach ($errors as $error): ?>
+                    <p><?php echo $error; ?></p>
+                <?php endforeach; ?>
+            </div>
+        <?php endif;
+
+        // Inclui o arquivo da view especificada na variável $view
+        // Isso insere o conteúdo da view no ponto onde include($view) é chamado
+        include($view); 
+    } else {
+        // Se $view estiver vazia, exibe uma mensagem de erro
+        echo "<p>View não encontrada.</p>";
+    }
+    ?>
+</section>
+
     </div>
     <footer class="text-center bg-light py-3">
         <p>&copy; 2024 Sistema Acadêmico</p>
@@ -74,4 +83,3 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
-

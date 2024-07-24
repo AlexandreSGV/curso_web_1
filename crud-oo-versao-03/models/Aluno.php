@@ -84,13 +84,18 @@ class Aluno {
         $row = $statement->fetch(PDO::FETCH_ASSOC); // Obtém o resultado da query
 
         // Define as propriedades do objeto Aluno com os dados obtidos
-        $this->nome = $row['nome'];
-        $this->matricula = $row['matricula'];
-        $this->cpf = $row['cpf'];
-        $this->email = $row['email'];
-        $this->data_nascimento = $row['data_nascimento'];
-        $this->timestamp_criacao = $row['timestamp_criacao'];
-        $this->timestamp_update = $row['timestamp_update'];
+        if($row) {
+            $this->nome = $row['nome'];
+            $this->matricula = $row['matricula'];
+            $this->cpf = $row['cpf'];
+            $this->email = $row['email'];
+            $this->data_nascimento = $row['data_nascimento'];
+            $this->timestamp_criacao = $row['timestamp_criacao'];
+            $this->timestamp_update = $row['timestamp_update'];
+            return true;
+        }
+    
+        return false;
     }
 
     // Método para atualizar um aluno
@@ -154,6 +159,6 @@ class Aluno {
         $statement->execute();
         return $statement;
     }
-    
+
 }
 ?>
