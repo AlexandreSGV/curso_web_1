@@ -34,7 +34,7 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="turmaDropdown">
                             <a class="dropdown-item" href="index.php?action=create-turma">Adicionar Turma</a>
-                            <a class="dropdown-item" href="index.php?action=list-alunos">Listar Turmas</a>
+                            <a class="dropdown-item" href="index.php?action=list-turmas">Listar Turmas</a>
                         </div>
                     </li>
                 </ul>

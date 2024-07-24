@@ -53,8 +53,12 @@ class TurmaController {
     public function read($id) {
         $this->turma->id = $id; // Define o ID do turma
         $this->turma->read(); // Obtém os detalhes do turma chamando o método read() da classe Turma
-        return ['view' => '../views/turma/read.php', 'data' => ['turma' => $this->turma]]; // Retorna a view e os dados do turma
+       
+        return ['view' => '../views/turma/view.php', 'data' => ['turma' => $this->turma]];// Retorna a view e os dados do turma
     }
+
+
+
 
     // Método para exibir o formulário de edição e atualizar um turma
     public function edit($id) {
@@ -85,5 +89,6 @@ class TurmaController {
             exit;
         }
     }
+
 }
 ?>

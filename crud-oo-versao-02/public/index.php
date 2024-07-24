@@ -60,6 +60,7 @@ switch ($action) {
         // Chama o método index() do controlador de Aluno para listar todos os turmas
         $result = $turmaController->index();
         break;
+    
 
 
     default:
