@@ -1,5 +1,5 @@
 <?php
-$host = 'localhost';
+$host = 'localhost:3306';
 $db = 'sistema_ifpe';
 $user = 'root';
 $pass = '1234';
