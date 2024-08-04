@@ -7,6 +7,7 @@ $id = $_GET['id'];
 
 // Prepara a instrução SQL para selecionar o aluno pelo ID
 $stmt = $pdo->prepare("SELECT * FROM alunos WHERE id = ?");
+
 // Executa a instrução SQL, passando o ID do aluno como parâmetro
 $stmt->execute([$id]);
 
