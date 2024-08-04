@@ -8,7 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = $_POST['email'];
     $stmt = $pdo->prepare("INSERT INTO alunos (nome, matricula, data_nascimento, email) VALUES (?, ?, ?, ?)");
     $stmt->execute([$nome, $matricula, $dataNascimento, $email]);
-    header('Location: read-aluno.php');
+    header('Location: index-aluno.php');
 }
 ?>
 
@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <nav>
             <ul>
                 <li><a href="../index.php">Home</a></li>
-                <li><a href="read-aluno.php">Listar Alunos</a></li>
+                <li><a href="index-aluno.php">Listar Alunos</a></li>
                 <li><a href="create-aluno.php">Adicionar Aluno</a></li>
             </ul>
         </nav>

@@ -1,7 +1,10 @@
 <?php
+// Inclui o arquivo de conexão com o banco de dados
 require_once 'db.php';
 
+// Executa a consulta para obter todos os alunos
 $stmt = $pdo->query("SELECT * FROM alunos");
+// Recupera todos os resultados da consulta como um array associativo
 $alunos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
@@ -39,14 +42,18 @@ $alunos = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 </tr>
             </thead>
             <tbody>
+                <!-- Itera sobre os alunos e cria uma linha para cada aluno na tabela -->
                 <?php foreach ($alunos as $aluno): ?>
                     <tr>
+                        <!-- Exibe os dados do aluno -->
                         <td><?= $aluno['id'] ?></td>
                         <td><?= $aluno['nome'] ?></td>
                         <td><?= $aluno['matricula'] ?></td>
                         <td><?= $aluno['data_nascimento'] ?></td>
                         <td><?= $aluno['email'] ?></td>
                         <td>
+                            <!-- Links para visualizar, editar e excluir o aluno -->
+                            <a href="read-aluno.php?id=<?= $aluno['id'] ?>">Visualizar</a>
                             <a href="update-aluno.php?id=<?= $aluno['id'] ?>">Editar</a>
                             <a href="delete-aluno.php?id=<?= $aluno['id'] ?>">Excluir</a>
                         </td>
