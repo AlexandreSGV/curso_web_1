@@ -7,9 +7,10 @@
 
     // Prepara a instrução SQL para selecionar o aluno pelo ID
     $stmt = $pdo->prepare("SELECT * FROM alunos WHERE id = ?");
+    // Executa a instrução SQL, passando o ID do aluno como parâmetro
     $stmt->execute([$id]);
 
-    // Recupera os dados do aluno
+    // Recupera os dados do aluno como um array associativo
     $aluno = $stmt->fetch(PDO::FETCH_ASSOC);
 ?>
 
@@ -36,16 +37,19 @@
     <main>
         <h2>Detalhes do Aluno</h2>
         <?php if ($aluno): ?>
+            <!-- Exibe os detalhes do aluno -->
             <p><strong>ID:</strong> <?= $aluno['id'] ?></p>
             <p><strong>Nome:</strong> <?= $aluno['nome'] ?></p>
             <p><strong>Matrícula:</strong> <?= $aluno['matricula'] ?></p>
             <p><strong>Data de Nascimento:</strong> <?= $aluno['data_nascimento'] ?></p>
             <p><strong>E-mail:</strong> <?= $aluno['email'] ?></p>
             <p>
+                <!-- Links para editar e excluir o aluno -->
                 <a href="update-aluno.php?id=<?= $aluno['id'] ?>">Editar</a>
                 <a href="delete-aluno.php?id=<?= $aluno['id'] ?>">Excluir</a>
             </p>
         <?php else: ?>
+            <!-- Exibe uma mensagem caso o aluno não seja encontrado -->
             <p>Aluno não encontrado.</p>
         <?php endif; ?>
     </main>

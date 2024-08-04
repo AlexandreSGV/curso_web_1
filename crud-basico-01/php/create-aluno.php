@@ -1,13 +1,22 @@
 <?php
+// Inclui o arquivo de conexão com o banco de dados
 require_once 'db.php';
 
+// Verifica se o formulário foi submetido através do método POST
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    // Obtém os dados enviados pelo formulário
     $nome = $_POST['nome'];
     $matricula = $_POST['matricula'];
     $dataNascimento = $_POST['dataNascimento'];
     $email = $_POST['email'];
+    
+    // Prepara a instrução SQL para inserir um novo aluno no banco de dados
     $stmt = $pdo->prepare("INSERT INTO alunos (nome, matricula, data_nascimento, email) VALUES (?, ?, ?, ?)");
+    
+    // Executa a instrução SQL com os dados do formulário
     $stmt->execute([$nome, $matricula, $dataNascimento, $email]);
+    
+    // Redireciona para a página de listagem de alunos após a inserção
     header('Location: index-aluno.php');
 }
 ?>
@@ -34,15 +43,25 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     <main>
         <h2>Adicionar Aluno</h2>
+        <!-- Formulário para adicionar um novo aluno -->
         <form method="POST">
             <label for="nome">Nome:</label>
+            <!-- Campo para inserir o nome do aluno -->
             <input type="text" id="nome" name="nome" required>
+            
             <label for="matricula">Matrícula:</label>
+            <!-- Campo para inserir a matrícula do aluno -->
             <input type="text" id="matricula" name="matricula" required>
+            
             <label for="dataNascimento">Data de Nascimento:</label>
+            <!-- Campo para inserir a data de nascimento do aluno -->
             <input type="date" id="dataNascimento" name="dataNascimento" required>
+            
             <label for="email">E-mail:</label>
+            <!-- Campo para inserir o e-mail do aluno -->
             <input type="email" id="email" name="email" required>
+            
+            <!-- Botão para submeter o formulário -->
             <button type="submit">Adicionar</button>
         </form>
     </main>
