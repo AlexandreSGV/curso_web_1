@@ -1,4 +1,5 @@
 <?php
+
 /**
  * O Controller no padrão MVC (Model-View-Controller) é responsável por
  * receber as requisições do usuário, processar essas requisições
