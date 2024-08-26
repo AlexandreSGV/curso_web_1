@@ -41,6 +41,9 @@ session_start();
     <main>
         <h2>Bem-vindo ao Sistema Acadêmico do IFPE</h2>
         <p>Utilize o menu acima para navegar pelo sistema.</p>
+        <br>
+        <p>Esta versão inclui a exportação dos dados de turma para PDF.</p>
+       
     </main>
 
     <footer>
